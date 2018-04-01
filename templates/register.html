@@ -1,0 +1,68 @@
+<form id="form">
+    <div class="alert alert-success" id="alert" style="display: none"></div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Email</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="Email" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Password</label>
+        <div class="col-9">
+            <input type="password" class="form-control" name="Password" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Your name</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="Name" placeholder="Your name">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign up</button>
+</form>
+<style>
+    #alert p {
+        margin-bottom: 0 !important;
+    }
+</style>
+<script type="text/javascript">
+    $('#form').submit(function (e) {
+        e.preventDefault();
+        data = {
+            Email: $('#form input[name=Email]').val(),
+            Password: $('#form input[name=Password]').val(),
+            Name: $('#form input[name=Name]').val(),
+        }
+        $('#alert').hide();
+        $.ajax({
+            url: '/register',
+            data: data,
+            //processData: false,
+            type: 'POST',
+            success: function ( data ) {
+                $('#alert').addClass('alert-success');
+                $('#alert').removeClass('alert-danger');
+                $('#alert').show();
+                $('#alert').html('Your account have been created. You can go <a href="/login">Here</a> to login')
+            },
+            error: function (err) {
+                const response = err.responseJSON;
+                if (typeof (response.error) === 'string') {
+                    $('#alert').html(response.error);
+                }else{
+                    let content = '';
+                    for (var i in response.error) {
+                        content += `<p>${i}: ${response.error[i]}</p>`;
+                    }
+                    $('#alert').html(content);
+                }
+                $('#alert').removeClass('alert-success');
+                $('#alert').addClass('alert-danger');
+                $('#alert').show();
+            }
+        });
+    })
+    $('#form input').keyup(function () {
+        $('#alert').hide();
+    })
+</script>

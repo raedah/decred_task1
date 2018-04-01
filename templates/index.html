@@ -1,0 +1,12 @@
+{{if .authenticated}}
+<h1 class="mt-5">You are already logged in</h1>
+<p class="lead">Hello <code>{{.user.Name}}</code>.</p>
+{{else}}
+<h1 class="mt-5">You do not sign in</h1>
+<p class="lead">
+    You can go <a href="/login">Here</a> to login
+</p>
+<p class="lead">
+    Or go <a href="/register">Here</a> to create a account
+</p>
+{{end}}
