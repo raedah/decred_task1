@@ -3,34 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>{{.title}}</title>
-    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/disk/bootstrap.min.css" rel="stylesheet">
     <link href="/public/style.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/public/disk/jquery.min.js"></script>
+    <script src="/public/disk/popper.min.js"></script>
+    <script src="/public/disk/bootstrap.min.js"></script>
 </head>
 <body>
 
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/">Logo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home </a>
-                </li>
-            </ul>
-            <div class="form-inline mt-2 mt-md-0">
-            {{if .authenticated}}
-                <a href="/logout" class="btn btn-outline-success my-2 my-sm-0 mr-2" >Sign out</a>
-            {{else}}
-                <a href="/login" class="btn btn-outline-success my-2 my-sm-0 mr-2" >Sign in</a>
-                <a href="/register" class="btn btn-outline-success my-2 my-sm-0" >Sign up</a>
-            {{end}}
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="navbar-brand" href="/">Logo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home </a>
+                    </li>
+                </ul>
+                <div class="form-inline mt-2 mt-md-0">
+                {{if .authenticated}}
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="userSetting" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{.user.Name}}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="userSetting">
+                            <a class="dropdown-item" href="/profile">Profile</a>
+                            <a class="dropdown-item" href="/change-password">Change Password</a>
+                            <a class="dropdown-item" href="/logout">Sign out</a>
+                        </div>
+                    </div>
+                {{else}}
+                    <a href="/login" class="btn btn-outline-success my-2 my-sm-0 mr-2" >Sign in</a>
+                    <a href="/register" class="btn btn-outline-success my-2 my-sm-0" >Sign up</a>
+                {{end}}
+                </div>
             </div>
         </div>
+
     </nav>
 </header>
 

@@ -1,0 +1,95 @@
+<form id="form">
+    <div class="alert alert-success" id="alert" style="display: none"></div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Your invite link</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="InviteLink"  value="{{.host}}?ref={{.user.ID}}" readonly>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Email</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="Email" placeholder="Email" value="{{.user.Email}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Your name</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="Name" placeholder="Your name" value="{{.user.Name}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Telegram</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="Telegram" placeholder="Telegram" value="{{.user.Telegram}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Skype</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="Skype" placeholder="Skype" value="{{.user.Skype}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">WhatsApp</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="WhatsApp" placeholder="WhatsApp" value="{{.user.WhatsApp}}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-3" for="subtext">Signal</label>
+        <div class="col-9">
+            <input type="text" class="form-control" name="Signal" placeholder="Signal" value="{{.user.Signal}}">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+<style>
+    #alert p {
+        margin-bottom: 0 !important;
+    }
+</style>
+<script type="text/javascript">
+    $('#form').submit(function (e) {
+        e.preventDefault();
+        data = {
+            Email: $('#form input[name=Email]').val(),
+            Name: $('#form input[name=Name]').val(),
+            Telegram: $('#form input[name=Telegram]').val(),
+            Skype: $('#form input[name=Skype]').val(),
+            WhatsApp: $('#form input[name=WhatsApp]').val(),
+            Signal: $('#form input[name=Signal]').val()
+        }
+        $('#alert').hide();
+        $.ajax({
+            url: '/profile',
+            data: data,
+            //processData: false,
+            type: 'PUT',
+            success: function ( data ) {
+                $('#alert').addClass('alert-success');
+                $('#alert').removeClass('alert-danger');
+                $('#alert').show();
+                $('#alert').html('Your profile have been updated.')
+            },
+            error: function (err) {
+                const response = err.responseJSON;
+                if (typeof (response.error) === 'string') {
+                    $('#alert').html(response.error);
+                }else{
+                    let content = '';
+                    for (var i in response.error) {
+                        content += `<p>${i}: ${response.error[i]}</p>`;
+                    }
+                    $('#alert').html(content);
+                }
+                $('#alert').removeClass('alert-success');
+                $('#alert').addClass('alert-danger');
+                $('#alert').show();
+            }
+        });
+    })
+    $('#form input').keyup(function () {
+        $('#alert').hide();
+    })
+</script>
