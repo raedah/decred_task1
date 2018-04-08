@@ -3,9 +3,9 @@
         This is a success alert—check it out!
     </div>
     <div class="form-group row">
-        <label class="col-3" for="subtext">Email</label>
+        <label class="col-3" for="subtext">User Name</label>
         <div class="col-9">
-            <input type="text" class="form-control" name="Email" placeholder="Email">
+            <input type="text" class="form-control" name="UserName" placeholder="User Name">
         </div>
     </div>
     <div class="form-group row">
@@ -25,7 +25,7 @@
     $('#form').submit(function (e) {
         e.preventDefault();
         data = {
-            Email: $('#form input[name=Email]').val(),
+            UserName: $('#form input[name=UserName]').val(),
             Password: $('#form input[name=Password]').val(),
         }
         $('#alert').hide();

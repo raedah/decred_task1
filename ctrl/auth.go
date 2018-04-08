@@ -1,4 +1,4 @@
-package controller
+package ctrl
 
 import (
 	"gopkg.in/kataras/iris.v8"
@@ -51,7 +51,7 @@ func postLogin(ctx iris.Context)  {
 				})
 			}else{
 				storeUser := User{}
-				if err := db.One("Email", user.Email, &storeUser);err == nil {
+				if err := db.One("UserName", user.UserName, &storeUser);err == nil {
 					if err := bcrypt.CompareHashAndPassword([]byte(storeUser.Password),[]byte(user.Password));err == nil {
 						session := sess.Start(ctx)
 						session.Set(userStoreKey, storeUser)
@@ -108,7 +108,7 @@ func postRegister(ctx iris.Context)  {
 						ctx.StatusCode(iris.StatusConflict)
 						ctx.JSON(iris.Map{
 							"error": iris.Map{
-								"Email": "The email is already taken",
+								"UserName": "The user name is already taken",
 							},
 						})
 					}else{

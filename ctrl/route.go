@@ -1,4 +1,4 @@
-package controller
+package ctrl
 
 import (
 	"gopkg.in/kataras/iris.v8"
@@ -9,7 +9,8 @@ import (
 type (
 	User struct {
 		ID 				int			`storm:"increment"`
-		Email			string		`validate:"required,email" storm:"unique"`
+		UserName		string		`validate:"required,excludes= " storm:"unique"`
+		Email			string		`validate:"omitempty,email"`
 		Password 		string		`validate:"required"`
 		Name			string		`validate:"required"`
 		Telegram		string

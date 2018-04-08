@@ -3,9 +3,20 @@
 Step 1:
  
 - 4/1/2018: 
-`8h - 10h`, `14h - 18h`, `19h - 21h`, Total : `8h`
+Total : `8h` https://github.com/nobita0590/decred_task1
 
 Step 2:
 
 - 4/2/2018:
-`9h30 - 11h30`, `16h30 - 22h30`, Total : `8h`
+Total : `8h` https://github.com/nobita0590/decred_task1
+- 4/3/2018
+Total: `3h` reseach to build the base code in standard package
+- 4/4/2018
+Total: `4h` reseach to build the base code in standard package
+- 4/5/2018
+Total: `9h` build the base code in standard package
+- 4/6/2018
+Total: `9h` build the base code in standard package
+- 4/7/2018
+Total: `3h` complete the base code in standard package
+[link](https://gitlab.com/raedah/mgmt/tree/skynet)
