@@ -37,6 +37,7 @@ func BindRoute(app *iris.Application)  {
 	app.Get("/login", getLogin)
 	app.Post("/login", postLogin)
 	app.Get("/logout", func(ctx iris.Context) {
+		ctx.IsAjax()
 		session := sess.Start(ctx)
 		session.Delete("user")
 		ctx.Redirect("/")
