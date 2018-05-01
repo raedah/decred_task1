@@ -58,3 +58,4 @@ Total: `9h` fix bug and complete new requirement (both msgs and mgmt)
 - 4/30/2018
 Total: `7h` improve interface. fixed delete option bug.edit profile page(mgmt)
 
+`Total: 165h`
