@@ -65,7 +65,7 @@ Total: `11h` Complete manage project(mgmt)[commit](https://gitlab.com/raedah/mgm
 Total: `8h` Discuss about time checker of old month; new requirement of mgmt project. 
 Fix options manage page and user profile, user viewer page [commit](https://gitlab.com/raedah/mgmt/commit/2f37876a6696f752f1a040301ad793c58442e938)
 - 5/3/2018
-Total: 10h Add currencies, add upload document, add work log page
+Total: `10h` Add currencies, add upload document, add work log page
 [commit](https://gitlab.com/raedah/mgmt/commit/ca186d16b0b2d02a12739b452c8975d7a61278e3)
 [commit](https://gitlab.com/raedah/mgmt/commit/95f4df36b3247f9e2f605e17dd8056c91866f0c1)
 - 5/4/2018
@@ -134,3 +134,5 @@ Total `8h` add exchange selection(bonzai)
 fixed dep issue(msgs) [commit](https://gitlab.com/raedah/msgs/commit/45210aec0496c11210406322917072a81b1b3707)
 add websocket to msgs
 - 5/30/2018 deploy websocket and change interface [commit](https://gitlab.com/raedah/msgs/commit/5a1790d184fd70d05a7220ae7127386ed565217d)
+
+Total `184h`
